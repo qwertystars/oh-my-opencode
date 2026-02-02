@@ -36,6 +36,7 @@ import {
   createStopContinuationGuardHook,
   createCompactionContextInjector,
   createUnstableAgentBabysitterHook,
+  createCopilotAgentModeHook,
 } from "./hooks";
 import {
   contextCollector,
@@ -162,6 +163,7 @@ const OhMyOpenCodePlugin: Plugin = async (ctx) => {
     ? createEmptyTaskResponseDetectorHook(ctx)
     : null;
   const thinkMode = isHookEnabled("think-mode") ? createThinkModeHook() : null;
+  const copilotAgentMode = createCopilotAgentModeHook();
   const claudeCodeHooks = createClaudeCodeHooksHook(
     ctx,
     {
@@ -467,6 +469,7 @@ const OhMyOpenCodePlugin: Plugin = async (ctx) => {
       await claudeCodeHooks["chat.message"]?.(input, output);
       await autoSlashCommand?.["chat.message"]?.(input, output);
       await startWork?.["chat.message"]?.(input, output);
+      await copilotAgentMode["chat.message"]?.(input, output);
 
       if (!hasConnectedProvidersCache()) {
         ctx.client.tui.showToast({

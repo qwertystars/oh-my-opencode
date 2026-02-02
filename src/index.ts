@@ -36,6 +36,7 @@ import {
   createStopContinuationGuardHook,
   createCompactionContextInjector,
   createUnstableAgentBabysitterHook,
+  createCopilotSubagentProxyHook,
 } from "./hooks";
 import {
   contextCollector,
@@ -327,6 +328,10 @@ const OhMyOpenCodePlugin: Plugin = async (ctx) => {
     );
   }
 
+  const copilotSubagentProxy = isHookEnabled("copilot-subagent-proxy")
+    ? createCopilotSubagentProxyHook(ctx)
+    : null;
+
   const backgroundNotificationHook = isHookEnabled("background-notification")
     ? createBackgroundNotificationHook(backgroundManager)
     : null;
@@ -438,6 +443,13 @@ const OhMyOpenCodePlugin: Plugin = async (ctx) => {
     },
 
     "chat.message": async (input, output) => {
+      // Run copilot proxy FIRST - it may route message to child session
+      const proxied = await copilotSubagentProxy?.["chat.message"]?.(input, output)
+      if (proxied) {
+        // Message was handled by proxy, skip normal processing
+        return
+      }
+
       if (input.agent) {
         setSessionAgent(input.sessionID, input.agent);
       }
@@ -567,6 +579,7 @@ const OhMyOpenCodePlugin: Plugin = async (ctx) => {
       await ralphLoop?.event(input);
       await stopContinuationGuard?.event(input);
       await atlasHook?.handler(input);
+      await copilotSubagentProxy?.event(input);
 
       const { event } = input;
       const props = event.properties as Record<string, unknown> | undefined;

@@ -8,6 +8,7 @@ import { createExploreAgent, EXPLORE_PROMPT_METADATA } from "./explore"
 import { createMultimodalLookerAgent, MULTIMODAL_LOOKER_PROMPT_METADATA } from "./multimodal-looker"
 import { createMetisAgent, metisPromptMetadata } from "./metis"
 import { createAtlasAgent, atlasPromptMetadata } from "./atlas"
+import { createTheUserAgent, theUserPromptMetadata } from "./the-user"
 import { createMomusAgent, momusPromptMetadata } from "./momus"
 import { createHephaestusAgent } from "./hephaestus"
 import type { AvailableAgent, AvailableCategory, AvailableSkill } from "./dynamic-agent-prompt-builder"
@@ -32,6 +33,9 @@ const agentSources: Record<BuiltinAgentName, AgentSource> = {
   // Note: Atlas is handled specially in createBuiltinAgents()
   // because it needs OrchestratorContext, not just a model string
   atlas: createAtlasAgent as unknown as AgentFactory,
+  // Note: TheUser is handled specially in createBuiltinAgents()
+  // because it needs TheUserContext (similar to Atlas)
+  "the-user": createTheUserAgent as unknown as AgentFactory,
 }
 
 /**
@@ -46,6 +50,7 @@ const agentMetadata: Partial<Record<BuiltinAgentName, AgentPromptMetadata>> = {
   metis: metisPromptMetadata,
   momus: momusPromptMetadata,
   atlas: atlasPromptMetadata,
+  "the-user": theUserPromptMetadata,
 }
 
 function isFactory(source: AgentSource): source is AgentFactory {
@@ -271,6 +276,7 @@ export async function createBuiltinAgents(
      if (agentName === "sisyphus") continue
      if (agentName === "hephaestus") continue
      if (agentName === "atlas") continue
+     if (agentName === "the-user") continue
      if (disabledAgents.some((name) => name.toLowerCase() === agentName.toLowerCase())) continue
 
      const override = agentOverrides[agentName]
@@ -451,6 +457,38 @@ export async function createBuiltinAgents(
       orchestratorConfig = applyOverrides(orchestratorConfig, orchestratorOverride, mergedCategories)
 
       result["atlas"] = orchestratorConfig
+    }
+   }
+
+   if (!disabledAgents.includes("the-user")) {
+     const theUserOverride = agentOverrides["the-user"]
+     const theUserRequirement = AGENT_MODEL_REQUIREMENTS["the-user"]
+
+    const theUserResolution = applyModelResolution({
+      // TheUser uses cheap models - respects its own fallbackChain
+      userModel: theUserOverride?.model,
+      requirement: theUserRequirement,
+      availableModels,
+      systemDefaultModel,
+    })
+
+    if (theUserResolution) {
+      const { model: theUserModel, variant: theUserResolvedVariant } = theUserResolution
+
+      let theUserConfig = createTheUserAgent({
+        model: theUserModel,
+        availableAgents,
+        availableSkills,
+        userCategories: categories,
+      })
+
+      if (theUserResolvedVariant) {
+        theUserConfig = { ...theUserConfig, variant: theUserResolvedVariant }
+      }
+
+      theUserConfig = applyOverrides(theUserConfig, theUserOverride, mergedCategories)
+
+      result["the-user"] = theUserConfig
     }
    }
 

@@ -94,6 +94,17 @@ export const AGENT_MODEL_REQUIREMENTS: Record<string, ModelRequirement> = {
       { providers: ["google", "github-copilot", "opencode"], model: "gemini-3-pro" },
     ],
   },
+  "the-user": {
+    // TheUser uses cheap/fast models - it coordinates, not executes
+    fallbackChain: [
+      { providers: ["anthropic", "opencode"], model: "claude-haiku-4-5" },
+      { providers: ["google", "github-copilot", "opencode"], model: "gemini-3-flash" },
+      { providers: ["github-copilot"], model: "gpt-5-mini" },
+      { providers: ["opencode"], model: "gpt-5-nano" },
+      { providers: ["zai-coding-plan"], model: "glm-4.7" },
+      { providers: ["opencode"], model: "glm-4.7-free" },
+    ],
+  },
 }
 
 export const CATEGORY_MODEL_REQUIREMENTS: Record<string, ModelRequirement> = {

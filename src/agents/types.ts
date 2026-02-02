@@ -80,6 +80,7 @@ export type BuiltinAgentName =
   | "metis"
   | "momus"
   | "atlas"
+  | "the-user"
 
 export type OverridableAgentName =
   | "build"

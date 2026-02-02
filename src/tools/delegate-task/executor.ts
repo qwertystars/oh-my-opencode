@@ -12,7 +12,7 @@ import { resolveMultipleSkillsAsync } from "../../features/opencode-skill-loader
 import { discoverSkills } from "../../features/opencode-skill-loader"
 import { getTaskToastManager } from "../../features/task-toast-manager"
 import { subagentSessions, getSessionAgent } from "../../features/claude-code-session-state"
-import { log, getAgentToolRestrictions, resolveModelPipeline, promptWithModelSuggestionRetry } from "../../shared"
+import { log, getAgentToolRestrictions, resolveModelPipeline, promptWithModelSuggestionRetry, buildCopilotAgentBody } from "../../shared"
 import { fetchAvailableModels, isModelAvailable } from "../../shared/model-availability"
 import { readConnectedProvidersCache } from "../../shared/connected-providers-cache"
 import { CATEGORY_MODEL_REQUIREMENTS } from "../../shared/model-requirements"
@@ -215,6 +215,7 @@ export async function executeSyncContinuation(
           question: false,
         },
         parts: [{ type: "text", text: args.prompt }],
+        ...buildCopilotAgentBody(resumeModel),
       },
     })
   } catch (promptError) {
@@ -599,6 +600,7 @@ export async function executeSyncTask(
           parts: [{ type: "text", text: args.prompt }],
           ...(categoryModel ? { model: { providerID: categoryModel.providerID, modelID: categoryModel.modelID } } : {}),
           ...(categoryModel?.variant ? { variant: categoryModel.variant } : {}),
+          ...buildCopilotAgentBody(categoryModel),
         },
       })
     } catch (promptError) {

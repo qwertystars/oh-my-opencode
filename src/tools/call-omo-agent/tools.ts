@@ -4,7 +4,7 @@ import { join } from "node:path"
 import { ALLOWED_AGENTS, CALL_OMO_AGENT_DESCRIPTION } from "./constants"
 import type { CallOmoAgentArgs } from "./types"
 import type { BackgroundManager } from "../../features/background-agent"
-import { log, getAgentToolRestrictions } from "../../shared"
+import { log, getAgentToolRestrictions, buildCopilotAgentBody } from "../../shared"
 import { consumeNewMessages } from "../../shared/session-cursor"
 import { findFirstMessageWithAgent, findNearestMessageWithFields, MESSAGE_STORAGE } from "../../features/hook-message-injector"
 import { getSessionAgent } from "../../features/claude-code-session-state"
@@ -199,6 +199,13 @@ Original error: ${createResult.error}`
     metadata: { sessionId: sessionID },
   })
 
+  // Get parent model for copilot agent options
+  const messageDir = getMessageDir(toolContext.sessionID)
+  const prevMessage = messageDir ? findNearestMessageWithFields(messageDir) : null
+  const parentModel = prevMessage?.model?.providerID && prevMessage?.model?.modelID
+    ? { providerID: prevMessage.model.providerID, modelID: prevMessage.model.modelID }
+    : undefined
+
   log(`[call_omo_agent] Sending prompt to session ${sessionID}`)
   log(`[call_omo_agent] Prompt text:`, args.prompt.substring(0, 100))
 
@@ -213,6 +220,7 @@ Original error: ${createResult.error}`
           delegate_task: false,
         },
         parts: [{ type: "text", text: args.prompt }],
+        ...buildCopilotAgentBody(parentModel),
       },
     })
   } catch (error) {

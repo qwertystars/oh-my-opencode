@@ -5,7 +5,7 @@ import type {
   LaunchInput,
   ResumeInput,
 } from "./types"
-import { log, getAgentToolRestrictions, promptWithModelSuggestionRetry } from "../../shared"
+import { log, getAgentToolRestrictions, promptWithModelSuggestionRetry, buildCopilotAgentBody } from "../../shared"
 import { ConcurrencyManager } from "./concurrency"
 import type { BackgroundTaskConfig, TmuxConfig } from "../../config/schema"
 import { isInsideTmux } from "../../shared/tmux"
@@ -333,6 +333,7 @@ export class BackgroundManager {
           question: false,
         },
         parts: [{ type: "text", text: input.prompt }],
+        ...buildCopilotAgentBody(launchModel),
       },
     }).catch((error) => {
       log("[background-agent] promptAsync error:", error)
@@ -587,6 +588,7 @@ export class BackgroundManager {
           question: false,
         },
         parts: [{ type: "text", text: input.prompt }],
+        ...buildCopilotAgentBody(resumeModel),
       },
     }).catch((error) => {
       log("[background-agent] resume prompt error:", error)
@@ -1081,6 +1083,7 @@ Use \`background_output(task_id="${task.id}")\` to retrieve this result when rea
           ...(agent !== undefined ? { agent } : {}),
           ...(model !== undefined ? { model } : {}),
           parts: [{ type: "text", text: notification }],
+          ...buildCopilotAgentBody(model),
         },
       })
       log("[background-agent] Sent notification to parent session:", {

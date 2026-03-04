@@ -1,14 +1,3 @@
-> [!WARNING]
-> **セキュリティ警告: 偽装サイトにご注意ください**
->
-> **ohmyopencode.com はこのプロジェクトとは一切関係がありません。** 私たちはそのサイトを運営したり承認したりしていません。
->
-> OhMyOpenCodeは**無料かつオープンソース**です。「公式」を名乗る第三者のサイトからインストーラーをダウンロードしたり、支払い情報を入力したり**しないでください。**
->
-> 偽装サイトはペイウォールの背後に隠れており、**どのような悪意あるプログラムを配布しているか検証できません**。そこからのダウンロードはすべて**潜在的に危険**であると見なしてください。
->
-> ✅ 公式ダウンロード: https://github.com/code-yeongyu/oh-my-opencode/releases
-
 > [!NOTE]
 >
 > [![Sisyphus Labs - Sisyphus is the agent that codes like your team.](./.github/assets/sisyphuslabs.png?v=2)](https://sisyphuslabs.ai)
@@ -44,7 +33,7 @@
 [![GitHub Forks](https://img.shields.io/github/forks/code-yeongyu/oh-my-opencode?color=8ae8ff&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/network/members)
 [![GitHub Stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-opencode?color=ffcb47&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/code-yeongyu/oh-my-opencode?color=ff80eb&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/issues)
-[![License](https://img.shields.io/badge/license-SUL--1.0-white?labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-SUL--1.0-white?labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/blob/dev/LICENSE.md)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/code-yeongyu/oh-my-opencode)
 
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [简体中文](README.zh-cn.md)
@@ -96,7 +85,7 @@ OmOをインストールして、`ultrawork`とタイプしてください。狂
 
 ```
 Install and configure oh-my-opencode by following the instructions here:
-https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md
+https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/dev/docs/guide/installation.md
 ```
 
 もしくは[インストールガイド](docs/guide/installation.md)を直接読んでもいいですが、マジでエージェントにやらせてください。人間は設定で必ずタイポします。
@@ -106,7 +95,7 @@ https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/
 インストールガイドを取得して、それに従ってください：
 
 ```bash
-curl -s https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md
+curl -s https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/dev/docs/guide/installation.md
 ```
 
 ---
@@ -135,23 +124,23 @@ Read this and tell me why it's not just another boilerplate: https://raw.githubu
 - [GLM Coding プラン ($10)](https://z.ai/subscribe)
 - 従量課金（pay-per-token）の対象であれば、kimiやgeminiモデルを使っても費用はほとんどかかりません。
 
-|       | 機能                      | 何をするのか                                                                                                                        |
-| :---: | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-|   🤖   | **規律あるエージェント (Discipline Agents)** | Sisyphusが Hephaestus、Oracle、Librarian、Exploreをオーケストレーションします。完全なAI開発チームが並列で動きます。 |
-|   ⚡   | **`ultrawork` / `ulw`**      | 一言でOK。すべてのエージェントがアクティブになり、終わるまで止まりません。 |
-|   🚪   | **[IntentGate](https://factory.ai/news/terminal-bench)**                 | ユーザーの真の意図を分析してから分類・行動します。もう文字通りに誤解して的外れなことをすることはありません。 |
-|   🔗   | **ハッシュベースの編集ツール**  | `LINE#ID` のコンテンツハッシュですべての変更を検証します。stale-lineエラー0%。[oh-my-pi](https://github.com/can1357/oh-my-pi)にインスパイアされています。[ハーネス問題 →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
-|   🛠️   | **LSP + AST-Grep**           | ワークスペース単位のリネーム、ビルド前の診断、ASTを考慮した書き換え。エージェントにIDEレベルの精度を提供します。 |
-|   🧠   | **バックグラウンドエージェント**        | 5人以上の専門家を並列で投入します。コンテキストは軽く保ち、結果は準備ができ次第受け取ります。 |
-|   📚   | **組み込みMCP**            | Exa（Web検索）、Context7（公式ドキュメント）、Grep.app（GitHub検索）。常にオンです。 |
-|   🔁   | **Ralph Loop / `/ulw-loop`** | 自己参照ループ。100%完了するまで絶対に止まりません。 |
-|   ✅   | **Todoの強制執行**            | エージェントがサボる？システムが首根っこを掴んで戻します。あなたのタスクは必ず終わります。 |
-|   💬   | **コメントチェッカー**          | コメントからAI臭い無駄話を排除します。シニアエンジニアが書いたようなコードになります。 |
-|   🖥️   | **Tmux統合**         | 完全なインタラクティブターミナル。REPL、デバッガー、TUIアプリがすべてリアルタイムで動きます。 |
-|   🔌   | **Claude Code互換性**   | 既存のフック、コマンド、スキル、MCP、プラグイン？すべてここでそのまま動きます。 |
-|   🎯   | **スキル内蔵MCP**      | スキルが独自のMCPサーバーを持ち歩きます。コンテキストが肥大化しません。 |
-|   📋   | **Prometheusプランナー**       | インタビューモードで、コードを1行触る前に戦略的な計画から立てます。 |
-|   🔍   | **`/init-deep`**             | プロジェクト全体にわたって階層的な `AGENTS.md` ファイルを自動生成します。トークン効率とエージェントのパフォーマンスの両方を向上させます。 |
+|       | 機能                                                     | 何をするのか                                                                                                                                                                                                                   |
+| :---: | :------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   🤖   | **規律あるエージェント (Discipline Agents)**             | Sisyphusが Hephaestus、Oracle、Librarian、Exploreをオーケストレーションします。完全なAI開発チームが並列で動きます。                                                                                                            |
+|   ⚡   | **`ultrawork` / `ulw`**                                  | 一言でOK。すべてのエージェントがアクティブになり、終わるまで止まりません。                                                                                                                                                     |
+|   🚪   | **[IntentGate](https://factory.ai/news/terminal-bench)** | ユーザーの真の意図を分析してから分類・行動します。もう文字通りに誤解して的外れなことをすることはありません。                                                                                                                   |
+|   🔗   | **ハッシュベースの編集ツール**                           | `LINE#ID` のコンテンツハッシュですべての変更を検証します。stale-lineエラー0%。[oh-my-pi](https://github.com/can1357/oh-my-pi)にインスパイアされています。[ハーネス問題 →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
+|   🛠️   | **LSP + AST-Grep**                                       | ワークスペース単位のリネーム、ビルド前の診断、ASTを考慮した書き換え。エージェントにIDEレベルの精度を提供します。                                                                                                               |
+|   🧠   | **バックグラウンドエージェント**                         | 5人以上の専門家を並列で投入します。コンテキストは軽く保ち、結果は準備ができ次第受け取ります。                                                                                                                                  |
+|   📚   | **組み込みMCP**                                          | Exa（Web検索）、Context7（公式ドキュメント）、Grep.app（GitHub検索）。常にオンです。                                                                                                                                           |
+|   🔁   | **Ralph Loop / `/ulw-loop`**                             | 自己参照ループ。100%完了するまで絶対に止まりません。                                                                                                                                                                           |
+|   ✅   | **Todoの強制執行**                                       | エージェントがサボる？システムが首根っこを掴んで戻します。あなたのタスクは必ず終わります。                                                                                                                                     |
+|   💬   | **コメントチェッカー**                                   | コメントからAI臭い無駄話を排除します。シニアエンジニアが書いたようなコードになります。                                                                                                                                         |
+|   🖥️   | **Tmux統合**                                             | 完全なインタラクティブターミナル。REPL、デバッガー、TUIアプリがすべてリアルタイムで動きます。                                                                                                                                  |
+|   🔌   | **Claude Code互換性**                                    | 既存のフック、コマンド、スキル、MCP、プラグイン？すべてここでそのまま動きます。                                                                                                                                                |
+|   🎯   | **スキル内蔵MCP**                                        | スキルが独自のMCPサーバーを持ち歩きます。コンテキストが肥大化しません。                                                                                                                                                        |
+|   📋   | **Prometheusプランナー**                                 | インタビューモードで、コードを1行触る前に戦略的な計画から立てます。                                                                                                                                                            |
+|   🔍   | **`/init-deep`**                                         | プロジェクト全体にわたって階層的な `AGENTS.md` ファイルを自動生成します。トークン効率とエージェントのパフォーマンスの両方を向上させます。                                                                                      |
 
 ### 規律あるエージェント (Discipline Agents)
 
@@ -176,11 +165,11 @@ Read this and tell me why it's not just another boilerplate: https://raw.githubu
 
 Sisyphusがサブエージェントにタスクを委任する際、モデルを直接選ぶことはありません。**カテゴリー**を選びます。カテゴリーは自動的に適切なモデルにマッピングされます：
 
-| カテゴリー             | 用途                      |
-| :------------------- | :--------------------------------- |
-| `visual-engineering` | フロントエンド、UI/UX、デザイン            |
-| `deep`               | 自律的なリサーチと実行    |
-| `quick`              | 単一ファイルの変更、タイポの修正         |
+| カテゴリー           | 用途                                 |
+| :------------------- | :----------------------------------- |
+| `visual-engineering` | フロントエンド、UI/UX、デザイン      |
+| `deep`               | 自律的なリサーチと実行               |
+| `quick`              | 単一ファイルの変更、タイポの修正     |
 | `ultrabrain`         | ハードロジック、アーキテクチャの決定 |
 
 エージェントがどのような種類の作業かを伝え、ハーネスが適切なモデルを選択します。あなたは何も触る必要はありません。

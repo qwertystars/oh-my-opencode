@@ -10,7 +10,7 @@ WORKFLOW:
 VALIDATION:
   Payload shape: { "filePath": string, "edits": [...], "delete"?: boolean, "rename"?: string }
   Each edit must be one of: replace, append, prepend
-  Edit shape: { "op": "replace"|"append"|"prepend", "pos"?: "LINE#ID", "end"?: "LINE#ID", "lines"?: string|string[]|null }
+  Edit shape: { "op": "replace"|"append"|"prepend", "pos"?: "LINE#ID", "end"?: "LINE#ID", "lines": string|string[]|null }
   lines must contain plain replacement text only (no LINE#ID prefixes, no diff + markers)
   CRITICAL: all operations validate against the same pre-edit file snapshot and apply bottom-up. Refs/tags are interpreted against the last-read version of the file.
 
@@ -34,7 +34,7 @@ FILE CREATION:
   CRITICAL: only unanchored append/prepend can create a missing file.
 
 OPERATION CHOICE:
-  replace with pos only -> replace one line at pos (MOST COMMON for single-line edits)
+  replace with pos only -> replace one line at pos
   replace with pos+end -> replace ENTIRE range pos..end as a block (ranges MUST NOT overlap across edits)
   append with pos/end anchor -> insert after that anchor
   prepend with pos/end anchor -> insert before that anchor

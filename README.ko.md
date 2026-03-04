@@ -1,19 +1,3 @@
-> [!WARNING]
-> **보안 경고: 사칭 사이트 주의**
->
-> **ohmyopencode.com은 이 프로젝트와 아무런 관련이 없습니다.** 우리는 해당 사이트를 운영하거나 보증하지 않습니다.
->
-> OhMyOpenCode는 **무료 오픈소스**입니다. "공식"을 사칭하는 제3자 사이트에서 인스톨러를 다운로드하거나 결제 정보를 입력하지 **마세요.**
->
-> 사칭 사이트는 페이월 뒤에 숨어 있어 **어떤 악성 코드를 배포하는지 확인할 수 없습니다**. 해당 사이트의 다운로드는 모두 **잠재적 위험**으로 간주하세요.
->
-> ✅ 공식 다운로드: https://github.com/code-yeongyu/oh-my-opencode/releases
-
-> [!NOTE]
->
-> [![Sisyphus Labs - Sisyphus is the agent that codes like your team.](./.github/assets/sisyphuslabs.png?v=2)](https://sisyphuslabs.ai)
-> > **우리는 프론티어 에이전트의 미래를 정의하기 위해 Sisyphus의 완벽한 프로덕트 버전을 만들고 있습니다. <br />[여기](https://sisyphuslabs.ai)에서 대기자 명단에 등록하세요.**
-
 > [!TIP]
 > 저희와 함께 하세요!
 >
@@ -44,7 +28,7 @@
 [![GitHub Forks](https://img.shields.io/github/forks/code-yeongyu/oh-my-opencode?color=8ae8ff&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/network/members)
 [![GitHub Stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-opencode?color=ffcb47&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/code-yeongyu/oh-my-opencode?color=ff80eb&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/issues)
-[![License](https://img.shields.io/badge/license-SUL--1.0-white?labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-SUL--1.0-white?labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-opencode/blob/dev/LICENSE.md)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/code-yeongyu/oh-my-opencode)
 
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | [简体中文](README.zh-cn.md)
@@ -95,7 +79,7 @@ OmO 설치하고. `ultrawork` 치세요. 끝.
 
 ```
 Install and configure oh-my-opencode by following the instructions here:
-https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md
+https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/dev/docs/guide/installation.md
 ```
 
 아니면 [설치 가이드](docs/guide/installation.md)를 직접 읽으셔도 되지만, 진심으로 그냥 에이전트한테 시키세요. 사람은 설정하다 꼭 오타 냅니다.
@@ -105,7 +89,7 @@ https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/
 설치 가이드를 가져와서 따라 하세요:
 
 ```bash
-curl -s https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md
+curl -s https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/dev/docs/guide/installation.md
 ```
 
 ---
@@ -134,23 +118,23 @@ Read this and tell me why it's not just another boilerplate: https://raw.githubu
 - [GLM Coding 요금제 ($10)](https://z.ai/subscribe)
 - 종량제(pay-per-token) 대상자라면 kimi와 gemini 모델을 써도 비용이 별로 안 나옵니다.
 
-|       | 기능                      | 역할                                                                                                                        |
-| :---: | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-|   🤖   | **기강 잡힌 에이전트 (Discipline Agents)** | Sisyphus가 Hephaestus, Oracle, Librarian, Explore를 오케스트레이션합니다. 완전한 AI 개발팀이 병렬로 돌아갑니다. |
-|   ⚡   | **`ultrawork` / `ulw`**      | 단어 하나면 됩니다. 모든 에이전트가 활성화되고 다 끝날 때까지 멈추지 않습니다. |
-|   🚪   | **[IntentGate](https://factory.ai/news/terminal-bench)**                 | 사용자의 진짜 의도를 분석한 뒤 분류하거나 행동합니다. 더 이상 문자 그대로 오해해서 헛짓거리하는 일이 없습니다. |
-|   🔗   | **해시 기반 편집 툴**  | `LINE#ID` 콘텐츠 해시로 모든 변경 사항을 검증합니다. stale-line 에러 0%. [oh-my-pi](https://github.com/can1357/oh-my-pi)에서 영감을 받았습니다. [하니스 프로블러 →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
-|   🛠️   | **LSP + AST-Grep**           | 워크스페이스 단위 이름 변경, 빌드 전 진단, AST 기반 재작성. 에이전트에게 IDE급 정밀도를 제공합니다. |
-|   🧠   | **백그라운드 에이전트**        | 5명 이상의 전문가를 병렬로 투입합니다. 컨텍스트는 가볍게 유지하고 결과는 준비될 때 받습니다. |
-|   📚   | **기본 내장 MCP**            | Exa(웹 검색), Context7(공식 문서), Grep.app(GitHub 검색). 항상 켜져 있습니다. |
-|   🔁   | **Ralph Loop / `/ulw-loop`** | 자기 참조 루프. 100% 완료될 때까지 절대 멈추지 않습니다. |
-|   ✅   | **Todo 강제 집행**            | 에이전트가 딴짓한다고요? 시스템이 멱살 잡고 끌고 옵니다. 당신의 작업은 무조건 끝납니다. |
-|   💬   | **주석 검사기**          | 주석에 AI 냄새나는 헛소리를 빼버립니다. 시니어 개발자가 짠 것 같은 코드가 됩니다. |
-|   🖥️   | **Tmux 연동**         | 완전한 인터랙티브 터미널. REPL, 디버거, TUI 앱들 모두 실시간으로 돌아갑니다. |
-|   🔌   | **Claude Code 호환성**   | 기존 훅, 명령어, 스킬, MCP, 플러그인? 전부 여기서 그대로 돌아갑니다. |
-|   🎯   | **스킬 내장 MCP**      | 스킬이 자기만의 MCP 서버를 들고 다닙니다. 컨텍스트가 부풀어 오르지 않습니다. |
-|   📋   | **Prometheus 플래너**       | 인터뷰 모드로 코드 한 줄 만지기 전에 전략적인 계획부터 세웁니다. |
-|   🔍   | **`/init-deep`**             | 프로젝트 전체에 걸쳐 계층적인 `AGENTS.md` 파일을 자동 생성합니다. 토큰 효율과 에이전트 성능 둘 다 잡습니다. |
+|       | 기능                                                     | 역할                                                                                                                                                                                                                     |
+| :---: | :------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   🤖   | **기강 잡힌 에이전트 (Discipline Agents)**               | Sisyphus가 Hephaestus, Oracle, Librarian, Explore를 오케스트레이션합니다. 완전한 AI 개발팀이 병렬로 돌아갑니다.                                                                                                          |
+|   ⚡   | **`ultrawork` / `ulw`**                                  | 단어 하나면 됩니다. 모든 에이전트가 활성화되고 다 끝날 때까지 멈추지 않습니다.                                                                                                                                           |
+|   🚪   | **[IntentGate](https://factory.ai/news/terminal-bench)** | 사용자의 진짜 의도를 분석한 뒤 분류하거나 행동합니다. 더 이상 문자 그대로 오해해서 헛짓거리하는 일이 없습니다.                                                                                                           |
+|   🔗   | **해시 기반 편집 툴**                                    | `LINE#ID` 콘텐츠 해시로 모든 변경 사항을 검증합니다. stale-line 에러 0%. [oh-my-pi](https://github.com/can1357/oh-my-pi)에서 영감을 받았습니다. [하니스 프로블러 →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
+|   🛠️   | **LSP + AST-Grep**                                       | 워크스페이스 단위 이름 변경, 빌드 전 진단, AST 기반 재작성. 에이전트에게 IDE급 정밀도를 제공합니다.                                                                                                                      |
+|   🧠   | **백그라운드 에이전트**                                  | 5명 이상의 전문가를 병렬로 투입합니다. 컨텍스트는 가볍게 유지하고 결과는 준비될 때 받습니다.                                                                                                                             |
+|   📚   | **기본 내장 MCP**                                        | Exa(웹 검색), Context7(공식 문서), Grep.app(GitHub 검색). 항상 켜져 있습니다.                                                                                                                                            |
+|   🔁   | **Ralph Loop / `/ulw-loop`**                             | 자기 참조 루프. 100% 완료될 때까지 절대 멈추지 않습니다.                                                                                                                                                                 |
+|   ✅   | **Todo 강제 집행**                                       | 에이전트가 딴짓한다고요? 시스템이 멱살 잡고 끌고 옵니다. 당신의 작업은 무조건 끝납니다.                                                                                                                                  |
+|   💬   | **주석 검사기**                                          | 주석에 AI 냄새나는 헛소리를 빼버립니다. 시니어 개발자가 짠 것 같은 코드가 됩니다.                                                                                                                                        |
+|   🖥️   | **Tmux 연동**                                            | 완전한 인터랙티브 터미널. REPL, 디버거, TUI 앱들 모두 실시간으로 돌아갑니다.                                                                                                                                             |
+|   🔌   | **Claude Code 호환성**                                   | 기존 훅, 명령어, 스킬, MCP, 플러그인? 전부 여기서 그대로 돌아갑니다.                                                                                                                                                     |
+|   🎯   | **스킬 내장 MCP**                                        | 스킬이 자기만의 MCP 서버를 들고 다닙니다. 컨텍스트가 부풀어 오르지 않습니다.                                                                                                                                             |
+|   📋   | **Prometheus 플래너**                                    | 인터뷰 모드로 코드 한 줄 만지기 전에 전략적인 계획부터 세웁니다.                                                                                                                                                         |
+|   🔍   | **`/init-deep`**                                         | 프로젝트 전체에 걸쳐 계층적인 `AGENTS.md` 파일을 자동 생성합니다. 토큰 효율과 에이전트 성능 둘 다 잡습니다.                                                                                                              |
 
 ### 기강 잡힌 에이전트 (Discipline Agents)
 
@@ -176,11 +160,11 @@ Read this and tell me why it's not just another boilerplate: https://raw.githubu
 Sisyphus가 하위 에이전트에게 일을 맡길 때, 모델을 직접 고르지 않습니다. **카테고리**를 고릅니다. 카테고리는 자동으로 올바른 모델에 매핑됩니다:
 
 | 카테고리             | 용도                      |
-| :------------------- | :--------------------------------- |
-| `visual-engineering` | 프론트엔드, UI/UX, 디자인            |
-| `deep`               | 자율 리서치 및 실행    |
-| `quick`              | 단일 파일 변경, 오타 수정         |
-| `ultrabrain`         | 하드 로직, 아키텍처 결정 |
+| :------------------- | :------------------------ |
+| `visual-engineering` | 프론트엔드, UI/UX, 디자인 |
+| `deep`               | 자율 리서치 및 실행       |
+| `quick`              | 단일 파일 변경, 오타 수정 |
+| `ultrabrain`         | 하드 로직, 아키텍처 결정  |
 
 에이전트가 어떤 작업인지 말하면, 하네스가 알아서 적합한 모델을 꺼내옵니다. 당신은 손댈 게 없습니다.
 
